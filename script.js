@@ -6,7 +6,7 @@ var food;
 
 
 function setup(){
- createCanvas(600,600);
+ createCanvas(displayWidth,displayHeight);
  // createCanvas(scrW,scrH);
   frameRate(10);
   noStroke();
