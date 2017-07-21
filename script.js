@@ -1,5 +1,5 @@
-var scrW = screen.width;
-var scrH = screen.height;
+var scrW = screen.innerWidth;
+var scrH = screen.innerHeight;
 var scl = 20;
 var mySnake;
 var food;
