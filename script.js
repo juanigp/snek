@@ -25,7 +25,7 @@ function setup(){
 
 function mouseDragged() {
 
-  if ((mouseX-px)*(mouseX-px)+(mouseY-py)*(mouseY-py)>1000){
+  if ((mouseX-px)*(mouseX-px)+(mouseY-py)*(mouseY-py)>scl*scl){
     px = mouseX;
     py = mouseY;
   } else {
