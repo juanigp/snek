@@ -1,19 +1,35 @@
 var scrW = window.innerWidth;
 var scrH = window.innerHeight;
-var scl = 20;
+var scl;
 var mySnake;
 var food;
 
 
 function setup(){
 //  createCanvas(600,600);
+  if (scrH>scrW){
+    scl = floor(scrW/20);
+  } else {
+    scl = floor(scrH/20);
+  }
   createCanvas(scrW,scrH);
   frameRate(10);
   noStroke();
 
   mySnake = new Snake();
-  food = createVector(floor(random((width-scl)/scl))*scl,floor(random((height-scl)/scl))*scl )
+  food = createVector(floor(random((width-scl)/scl))*scl,floor(random((height-scl)/scl))*scl );
 
+}
+
+function windowResized(){
+  scrW = window.innerWidth;
+  scrH = window.innerHeight;
+  resizeCanvas(scrW,scrH);
+  if (scrH>scrW){
+    scl = floor(scrW/20);
+  } else {
+    scl = floor(scrH/20);
+  }
 }
 
 function draw(){
@@ -96,7 +112,7 @@ function Snake(){
 
 
 
-    if ((this.x===-scl)||(this.x===width)||(this.y===-scl)||(this.y===-1)){
+    if ((this.x<=-scl)||(this.x>=width)||(this.y<=-scl)||(this.y>=height)){
       resetGame();
     }
 
