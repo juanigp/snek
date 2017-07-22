@@ -12,7 +12,7 @@ function setup(){
   noStroke();
 
   mySnake = new Snake();
-  food = createVector(floor(random((scrW-scl)/scl))*scl,floor(random((scrH-scl)/scl))*scl )
+  food = createVector(floor(random((displayWidth-scl)/scl))*scl,floor(random((displayHeight-scl)/scl))*scl )
 
 }
 
@@ -34,13 +34,13 @@ function draw(){
 function resetGame(){
   delete mySnake;
   mySnake = new Snake();
-  food = createVector(floor(random((scrW-scl)/scl))*scl,floor(random((scrH-scl)/scl))*scl );
+  food = createVector(floor(random((displayWidth-scl)/scl))*scl,floor(random((displayHeight-scl)/scl))*scl );
 }
 
 
 function updateFood(){
-  food.x = floor(random((scrW-scl)/scl))*scl;
-  food.y = floor(random((scrH-scl)/scl))*scl;
+  food.x = floor(random((displayWidth-scl)/scl))*scl;
+  food.y = floor(random((displayHeight-scl)/scl))*scl;
 }
 function keyPressed(){
   if ((keyCode === UP_ARROW)&&(mySnake.yspeed===0)){
@@ -96,7 +96,7 @@ function Snake(){
 
 
 
-    if ((this.x===-scl)||(this.x===scrW)||(this.y===-scl)||(this.y===scrH)){
+    if ((this.x===-scl)||(this.x===displayWidth)||(this.y===-scl)||(this.y===displayHeight)){
       resetGame();
     }
 
