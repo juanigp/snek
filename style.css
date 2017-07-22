@@ -1,6 +1,7 @@
 
 body {
-
+  margin-top: 0;
+  margin-left: 0;
   display: flex;
   position: fixed;
 

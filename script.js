@@ -1,18 +1,18 @@
-var scrW = displayWidth;//screen.innerWidth;
-var scrH = displayHeight;// screen.innerHeight;
+var scrW = screen.width;
+var scrH = screen.height;
 var scl = 20;
 var mySnake;
 var food;
 
 
 function setup(){
- createCanvas(displayWidth,displayHeight);
- // createCanvas(scrW,scrH);
+//  createCanvas(600,600);
+  createCanvas(scrW,scrH);
   frameRate(10);
   noStroke();
 
   mySnake = new Snake();
-  food = createVector(floor(random((displayWidth-scl)/scl))*scl,floor(random((displayHeight-scl)/scl))*scl )
+  food = createVector(floor(random((width-scl)/scl))*scl,floor(random((height-scl)/scl))*scl )
 
 }
 
@@ -34,13 +34,13 @@ function draw(){
 function resetGame(){
   delete mySnake;
   mySnake = new Snake();
-  food = createVector(floor(random((displayWidth-scl)/scl))*scl,floor(random((displayHeight-scl)/scl))*scl );
+  food = createVector(floor(random((width-scl)/scl))*scl,floor(random((height-scl)/scl))*scl );
 }
 
 
 function updateFood(){
-  food.x = floor(random((displayWidth-scl)/scl))*scl;
-  food.y = floor(random((displayHeight-scl)/scl))*scl;
+  food.x = floor(random((width-scl)/scl))*scl;
+  food.y = floor(random((height-scl)/scl))*scl;
 }
 function keyPressed(){
   if ((keyCode === UP_ARROW)&&(mySnake.yspeed===0)){
@@ -96,7 +96,7 @@ function Snake(){
 
 
 
-    if ((this.x===-scl)||(this.x===displayWidth)||(this.y===-scl)||(this.y===displayHeight)){
+    if ((this.x===-scl)||(this.x===width)||(this.y===-scl)||(this.y===-1)){
       resetGame();
     }
 
