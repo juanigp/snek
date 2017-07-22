@@ -3,10 +3,10 @@ var scrH = window.innerHeight;
 var scl;
 var mySnake;
 var food;
-
+var px,py;
 
 function setup(){
-//  createCanvas(600,600);
+  //  createCanvas(600,600);
   if (scrH>scrW){
     scl = floor(scrW/20);
   } else {
@@ -18,7 +18,34 @@ function setup(){
 
   mySnake = new Snake();
   food = createVector(floor(random((width-scl)/scl))*scl,floor(random((height-scl)/scl))*scl );
+  px = 0;
+  py = 0;
 
+}
+
+function mouseDragged() {
+
+  if ((mouseX-px)*(mouseX-px)+(mouseY-py)*(mouseY-py)>1000){
+    px = mouseX;
+    py = mouseY;
+  } else {
+    if (abs(mouseX-px)>abs(mouseY-py)){
+      if((mouseX-px>0)&&(mySnake.xspeed===0)){
+        mySnake.dir(1,0);
+      } else if (mySnake.xspeed===0) {
+        mySnake.dir(-1,0);
+      }
+    }
+    else {
+      if((mouseY-py>0)&&(mySnake.yspeed===0)){
+        mySnake.dir(0,1);
+      } else if (mySnake.yspeed===0) {
+        mySnake.dir(0,-1);
+      }
+    }
+  }
+  // prevent default
+  return false;
 }
 
 function windowResized(){
